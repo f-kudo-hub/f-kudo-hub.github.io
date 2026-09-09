@@ -1,0 +1,9 @@
+# f-kudo-hub.github.io のルート。
+# ⚠ robots.txt は「ホストの直下」しか読まれない。
+#   各サイトが /omotenashi-guide/robots.txt を置いても、検索エンジンは見に来ない。
+#   サイトマップの在り処を伝えられるのは、このファイルだけ。
+
+User-agent: *
+Allow: /
+
+Sitemap: https://f-kudo-hub.github.io/omotenashi-guide/sitemap.xml
