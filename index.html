@@ -1,38 +1,183 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>f-kudo-hub</title>
-<meta name="description" content="訪日のお客さま向けアプリと、その案内ページ。">
+<title>Japan Etiquette Apps — travel Japan with confidence</title>
+<meta name="description" content="Two pocket guides for visitors to Japan: onsen, dining and temple manners, plus shrine etiquette with a camera translator. English, 日本語, 中文, 한국어.">
+<meta property="og:title" content="Japan Etiquette Apps">
+<meta property="og:description" content="Pocket guides to Japanese manners — onsen, dining, shrines and temples. In English, Japanese, Chinese and Korean.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://f-kudo-hub.github.io/">
+<meta name="theme-color" content="#1b1713">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c8402f'/%3E%3Cpath d='M12 20h40M16 27h32M22 20v32M42 20v32' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
-  :root{--紙:#fbf8f4;--字:#221c16;--薄:#6b5f52;--線:#e6ddd1;--朱:#b23a2e;--面:#fff}
-  @media (prefers-color-scheme:dark){:root{--紙:#17130f;--字:#efe7dc;--薄:#a2968a;--線:#332a22;--朱:#e0725f;--面:#1f1a15}}
+  :root{
+    --bg:#f7f2ea;--ink:#1b1713;--sub:#5f554a;--line:#e3d8c8;--card:#fffdf9;
+    --vermilion:#c8402f;--indigo:#26324a;--gold:#b88a3e;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#13110e;--ink:#f1e9dd;--sub:#a99d8f;--line:#2e2822;--card:#1c1915;
+    --vermilion:#e2604c;--indigo:#9fb0d4;--gold:#d6aa5c;
+  }}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--紙);color:var(--字);
-       font:16px/1.8 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Segoe UI",sans-serif}
-  main{max-width:40rem;margin:0 auto;padding:4rem 1.25rem 5rem}
-  h1{font-size:1.6rem;margin:0 0 .4rem}
-  .引{color:var(--薄);margin:0 0 2.5rem}
-  ul{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
-  li{background:var(--面);border:1px solid var(--線);border-radius:.7rem;padding:1.1rem 1.25rem}
-  a{color:var(--朱);text-decoration:none;font-weight:600}
-  a:hover{text-decoration:underline}
-  .説明{display:block;color:var(--薄);font-weight:400;font-size:.9rem;margin-top:.2rem}
-  footer{color:var(--薄);font-size:.85rem;margin-top:3rem}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Noto Sans JP",sans-serif}
+  a{color:inherit}
+  .wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+
+  /* ── hero ── */
+  .hero{position:relative;overflow:hidden;background:#1b1713;color:#f6efe4}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(60rem 30rem at 85% -10%,rgba(200,64,47,.55),transparent 60%),
+      radial-gradient(40rem 24rem at -10% 110%,rgba(184,138,62,.28),transparent 60%)}
+  .hero .wrap{position:relative;z-index:1;padding-top:4.5rem;padding-bottom:5rem}
+  .seal{display:inline-flex;align-items:center;gap:.55rem;font-size:.78rem;letter-spacing:.14em;
+    text-transform:uppercase;color:#e9c99a}
+  .seal svg{width:1.6rem;height:1.6rem}
+  h1{font-size:clamp(2.2rem,7vw,3.9rem);line-height:1.08;letter-spacing:-.02em;margin:1.1rem 0 1rem;max-width:16ch}
+  h1 em{font-style:normal;color:#ff8a6f}
+  .lead{font-size:1.1rem;color:#d9cdbd;max-width:34rem;margin:0 0 1.8rem}
+  .langs{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
+  .langs li{border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:.25rem .8rem;font-size:.88rem;color:#f0e4d2}
+  .torii{position:absolute;right:-2rem;bottom:-1.5rem;width:min(40vw,24rem);opacity:.12;pointer-events:none}
+
+  /* ── apps ── */
+  .apps{padding:3.5rem 0 1rem}
+  .eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--vermilion);font-weight:700;margin:0 0 .4rem}
+  h2{font-size:clamp(1.5rem,4vw,2rem);line-height:1.2;margin:0 0 1.8rem;letter-spacing:-.01em}
+  .grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
+  .app{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:1.25rem;
+    padding:1.5rem;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+  .app:hover{transform:translateY(-3px);box-shadow:0 14px 34px -18px rgba(27,23,19,.45)}
+  .app-head{display:flex;gap:1rem;align-items:center;margin-bottom:1rem}
+  .icon{flex:none;width:4.25rem;height:4.25rem;border-radius:1rem;display:grid;place-items:center;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.06),0 6px 14px -8px rgba(0,0,0,.5)}
+  .icon svg{width:2.6rem;height:2.6rem}
+  .i1{background:linear-gradient(145deg,#2c3a57,#1a2236)}
+  .i2{background:linear-gradient(145deg,#d6513d,#a8301f)}
+  .app h3{font-size:1.2rem;line-height:1.25;margin:0}
+  .app .tag{font-size:.85rem;color:var(--sub);margin:.15rem 0 0}
+  .app p{color:var(--sub);margin:0 0 1rem}
+  .feat{list-style:none;padding:0;margin:0 0 1.4rem;display:grid;gap:.45rem}
+  .feat li{display:flex;gap:.6rem;align-items:flex-start;font-size:.95rem}
+  .feat li::before{content:"";flex:none;width:.5rem;height:.5rem;border-radius:2px;margin-top:.55rem;
+    background:var(--vermilion);transform:rotate(45deg)}
+  .cta{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+    background:var(--ink);color:var(--bg);border-radius:.8rem;padding:.8rem 1rem;font-weight:700;font-size:.98rem}
+  .app:hover .cta{background:var(--vermilion);color:#fff}
+
+  /* ── why ── */
+  .why{padding:3rem 0 3.5rem}
+  .why-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr))}
+  .why-item{border-top:2px solid var(--gold);padding-top:.9rem}
+  .why-item b{display:block;font-size:1.02rem;margin-bottom:.2rem}
+  .why-item span{color:var(--sub);font-size:.94rem}
+
+  footer{border-top:1px solid var(--line);padding:1.6rem 0 2.4rem;color:var(--sub);font-size:.88rem}
+  footer p{margin:.2rem 0}
+  @media (prefers-reduced-motion:reduce){.app{transition:none}.app:hover{transform:none}}
 </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="seal">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#c8402f"/><path d="M12 20h40M16 27h32M22 20v32M42 20v32" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>
+      Japan Etiquette Apps
+    </span>
+    <h1>Know the manners. <em>Enjoy Japan</em> without the worry.</h1>
+    <p class="lead">Pocket guides that explain what to do at the onsen, the dinner table, the temple and the shrine — before you get there. In four languages.</p>
+    <ul class="langs" aria-label="Languages">
+      <li>English</li><li>日本語</li><li>中文</li><li>한국어</li>
+    </ul>
+  </div>
+  <svg class="torii" viewBox="0 0 200 160" aria-hidden="true">
+    <path d="M6 22q94-16 188 0l-4 14q-90-12-180 0z" fill="#fff"/>
+    <rect x="22" y="46" width="156" height="10" rx="2" fill="#fff"/>
+    <rect x="44" y="30" width="14" height="130" fill="#fff"/>
+    <rect x="142" y="30" width="14" height="130" fill="#fff"/>
+    <rect x="94" y="36" width="12" height="20" fill="#fff"/>
+  </svg>
+</header>
+
 <main>
-  <h1>f-kudo-hub</h1>
-  <p class="引">訪日のお客さま向けアプリと、その案内ページ。</p>
-  <ul>
-    <li>
-      <a href="/omotenashi-guide/">Japan Etiquette: Travel Guide</a>
-      <span class="説明">温泉・食事・寺社の作法を62項目。英・日・中・韓。</span>
-    </li>
-    <li>
-      <a href="/shrine-temple-guide/">Japan Shrine Etiquette</a>
-      <span class="説明">参拝の作法・おみくじ・御朱印。案内板をカメラで翻訳。</span>
-    </li>
-  </ul>
-  <footer>お問い合わせは、各アプリのApp Store掲載ページのサポート窓口から。</footer>
+  <section class="apps">
+    <div class="wrap">
+      <p class="eyebrow">Our apps</p>
+      <h2>Two guides for your trip</h2>
+      <div class="grid">
+
+        <a class="app" href="/omotenashi-guide/">
+          <div class="app-head">
+            <div class="icon i1">
+              <svg viewBox="0 0 48 48" fill="none" stroke="#f3e2c4" stroke-width="3" stroke-linecap="round" aria-hidden="true">
+                <path d="M8 30c0 6 7 10 16 10s16-4 16-10z" fill="#f3e2c4" stroke="none"/>
+                <path d="M17 24c-2-3 2-5 0-8M24 24c-2-3 2-5 0-8M31 24c-2-3 2-5 0-8"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Japan Etiquette: Travel Guide</h3>
+              <p class="tag">Onsen · Dining · Temples</p>
+            </div>
+          </div>
+          <p>62 manners for onsen, dining and temples — so you never wonder what to do next.</p>
+          <ul class="feat">
+            <li>Onsen manners</li>
+            <li>Table manners when eating out</li>
+            <li>Visiting temples and shrines</li>
+          </ul>
+          <span class="cta">See the guide →</span>
+        </a>
+
+        <a class="app" href="/shrine-temple-guide/">
+          <div class="app-head">
+            <div class="icon i2">
+              <svg viewBox="0 0 48 48" fill="#fff" aria-hidden="true">
+                <path d="M5 13q19-4 38 0l-1 4q-18-3-36 0z"/>
+                <rect x="9" y="20" width="30" height="3" rx="1"/>
+                <rect x="13" y="15" width="4" height="27"/>
+                <rect x="31" y="15" width="4" height="27"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Japan Shrine Etiquette</h3>
+              <p class="tag">Shrines · Omikuji · Goshuin</p>
+            </div>
+          </div>
+          <p>Visit a shrine the right way — and read the signs with your camera.</p>
+          <ul class="feat">
+            <li>How to pray at a shrine</li>
+            <li>Omikuji fortunes and goshuin stamps</li>
+            <li>Point your camera at a sign to translate it</li>
+          </ul>
+          <span class="cta">See the guide →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <div class="why-grid">
+        <div class="why-item"><b>Made in Japan</b><span>Written in Japan, from the Japanese side — the small things guidebooks skip.</span></div>
+        <div class="why-item"><b>Quick to read</b><span>Short, plain explanations. Find what you need in seconds, right where you are.</span></div>
+        <div class="why-item"><b>Four languages</b><span>English, Japanese, Chinese and Korean.</span></div>
+      </div>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <p>Support: please use the support link on each app's App Store page.</p>
+    <p lang="ja">お問い合わせは、各アプリのApp Store掲載ページのサポート窓口からお願いします。</p>
+  </div>
+</footer>
+
+</body>
 </html>
