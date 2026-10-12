@@ -8,3 +8,4 @@ Allow: /
 
 Sitemap: https://f-kudo-hub.github.io/omotenashi-guide/sitemap.xml
 Sitemap: https://f-kudo-hub.github.io/shrine-temple-guide/sitemap.xml
+Sitemap: https://f-kudo-hub.github.io/a2-drill/sitemap.xml
